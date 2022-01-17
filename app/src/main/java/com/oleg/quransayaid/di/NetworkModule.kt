@@ -3,6 +3,7 @@ package com.oleg.quransayaid.di
 import com.oleg.quransayaid.BuildConfig
 import com.oleg.quransayaid.api.ApiHelper
 import com.oleg.quransayaid.api.ApiService
+import com.oleg.quransayaid.common.Keys
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,8 +21,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    private const val BASE_URL = "https://quran-webapi.herokuapp.com"
 
     @Singleton
     @Provides
@@ -43,6 +42,7 @@ object NetworkModule {
     ): Retrofit =
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
+            .baseUrl(Keys.getBaseUrl())
             .client(okHttpClient)
             .build()
 
