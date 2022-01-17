@@ -1,6 +1,7 @@
-package com.oleg.quransayaid.data.api
+package com.oleg.quransayaid.api
 
 import com.oleg.quransayaid.data.Surah
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -10,6 +11,6 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("surah")
-    suspend fun getSurahes(): List<Surah>
+    suspend fun getSurahes(): Response<List<Surah>>
 
 }

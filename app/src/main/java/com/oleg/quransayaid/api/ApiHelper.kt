@@ -1,4 +1,4 @@
-package com.oleg.quransayaid.data.api
+package com.oleg.quransayaid.api
 
 import com.oleg.quransayaid.data.Surah
 import retrofit2.Response

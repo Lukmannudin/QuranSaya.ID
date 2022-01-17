@@ -1,12 +1,14 @@
-package com.oleg.quransayaid.data.di
+package com.oleg.quransayaid.di
 
-import com.oleg.quransayaid.data.api.ApiHelper
-import com.oleg.quransayaid.data.api.ApiService
+import com.oleg.quransayaid.BuildConfig
+import com.oleg.quransayaid.api.ApiHelper
+import com.oleg.quransayaid.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -51,6 +53,5 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideHelper(apiHelper: ApiHelper): ApiHelper = apiHelper
-
 
 }
