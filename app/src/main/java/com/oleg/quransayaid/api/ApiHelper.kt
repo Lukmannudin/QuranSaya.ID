@@ -1,6 +1,7 @@
 package com.oleg.quransayaid.api
 
-import com.oleg.quransayaid.data.Surah
+import com.oleg.quransayaid.data.surahsource.remote.BaseSurahResponse
+import com.oleg.quransayaid.data.surahsource.remote.SurahRemote
 import retrofit2.Response
 
 /**
@@ -8,7 +9,5 @@ import retrofit2.Response
  **/
 
 interface ApiHelper {
-
-    suspend fun getSurah(): Response<List<Surah>>
-
+    suspend fun getSurah(): Response<BaseSurahResponse<SurahRemote>>
 }

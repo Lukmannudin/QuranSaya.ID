@@ -1,6 +1,7 @@
 package com.oleg.quransayaid.api
 
-import com.oleg.quransayaid.data.Surah
+import com.oleg.quransayaid.data.surahsource.remote.BaseSurahResponse
+import com.oleg.quransayaid.data.surahsource.remote.SurahRemote
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -12,8 +13,7 @@ class ApiHelperImpl @Inject constructor(
     private val apiService: ApiService
 ) : ApiHelper {
 
-    override suspend fun getSurah(): Response<List<Surah>> {
+    override suspend fun getSurah(): Response<BaseSurahResponse<SurahRemote>> {
         return apiService.getSurahes()
     }
-
 }

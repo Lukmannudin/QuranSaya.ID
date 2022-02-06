@@ -2,6 +2,7 @@ package com.oleg.quransayaid.di
 
 import com.oleg.quransayaid.BuildConfig
 import com.oleg.quransayaid.api.ApiHelper
+import com.oleg.quransayaid.api.ApiHelperImpl
 import com.oleg.quransayaid.api.ApiService
 import com.oleg.quransayaid.common.Keys
 import dagger.Module
@@ -52,6 +53,5 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHelper(apiHelper: ApiHelper): ApiHelper = apiHelper
-
+    fun provideHelper(apiService: ApiService): ApiHelper = ApiHelperImpl(apiService)
 }
