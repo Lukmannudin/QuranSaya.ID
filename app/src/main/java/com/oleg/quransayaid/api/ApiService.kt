@@ -11,7 +11,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("list")
+    @GET("/list")
     suspend fun getSurahes(): Response<BaseSurahResponse<SurahRemote>>
 
 }
