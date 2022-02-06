@@ -5,6 +5,8 @@ import com.oleg.quransayaid.api.ApiHelper
 import com.oleg.quransayaid.api.ApiHelperImpl
 import com.oleg.quransayaid.api.ApiService
 import com.oleg.quransayaid.common.Keys
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,11 +40,19 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideMoshiBuilder() =
+        Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+
+    @Singleton
+    @Provides
     fun provideRetrofit(
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
+        moshi: Moshi
     ): Retrofit =
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl(Keys.getBaseUrl())
             .client(okHttpClient)
             .build()

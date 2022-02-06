@@ -9,7 +9,7 @@ import com.squareup.moshi.Json
 data class BaseSurahResponse<T>(
 
     @Json(name = "data")
-    val data: List<T?>? = null,
+    val data: List<T>? = null,
 
     @Json(name = "message")
     val message: String? = null,

@@ -4,6 +4,7 @@ import com.oleg.quransayaid.api.ApiHelper
 import com.oleg.quransayaid.data.Result
 import com.oleg.quransayaid.data.Surah
 import com.oleg.quransayaid.data.surahsource.SurahDataSource
+import com.oleg.quransayaid.mapper.surahmapper.SurahMapper.mapToSurahes
 import javax.inject.Inject
 
 /**
@@ -14,12 +15,17 @@ class SurahRemoteDataSource @Inject constructor(
     private val apiHelper: ApiHelper
 ) : SurahDataSource {
     override suspend fun fetchSurahes(): Result<List<Surah>> {
-        val surahes = apiHelper.getSurah()
-
-        if (surahes.isSuccessful) {
-            val surahesData = surahes.body()
+        return try {
+            val surahes = apiHelper.getSurah()
+            if (surahes.isSuccessful) {
+                val surahesData = surahes.body()?.data
+                Result.Success(surahesData.mapToSurahes())
+            } else {
+                Result.Error(Exception())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Result.Error(e)
         }
-
-        return Result.Success(mutableListOf())
     }
 }
