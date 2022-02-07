@@ -24,10 +24,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -36,6 +38,10 @@ android {
         cmake {
             path "CMakeLists.txt"
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -68,6 +74,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel_ktx"
     implementation "androidx.activity:activity-ktx:$activity_ktx"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
+    // chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:$chucker_version"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chucker_version"
+
 }
 
 // Allow references to generated code

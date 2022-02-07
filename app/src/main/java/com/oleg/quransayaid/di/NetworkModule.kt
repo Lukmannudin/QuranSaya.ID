@@ -1,5 +1,7 @@
 package com.oleg.quransayaid.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.oleg.quransayaid.BuildConfig
 import com.oleg.quransayaid.api.ApiHelper
 import com.oleg.quransayaid.api.ApiHelperImpl
@@ -10,6 +12,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,11 +30,14 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+    fun provideOkHttpClient(
+        @ApplicationContext context: Context
+    ) = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+//            .addInterceptor(loggingInterceptor)
+            .addInterceptor(ChuckerInterceptor(context))
             .build()
     } else {
         OkHttpClient.Builder()

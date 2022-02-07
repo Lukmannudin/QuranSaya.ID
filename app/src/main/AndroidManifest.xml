@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuranSayaID">
         <activity
-            android:name="com.oleg.quransayaid.MainActivity"
+            android:name="com.oleg.quransayaid.ui.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
