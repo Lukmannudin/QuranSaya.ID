@@ -9,7 +9,8 @@ import com.oleg.quransayaid.databinding.ItemSurahBinding
  **/
 
 class HomeViewHolder(
-    private val binding: ItemSurahBinding
+    private val binding: ItemSurahBinding,
+    private val onItemClick: (surahId: Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(surah: Surah) {
@@ -18,6 +19,10 @@ class HomeViewHolder(
             surahNameLatin.text = surah.latin
             surahNameArabic.text = surah.arabic
             ayatCount.text = "${surah.ayatCount} ayat"
+
+            binding.root.setOnClickListener {
+                onItemClick.invoke(surah.id)
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.oleg.quransayaid.common.gone
 import com.oleg.quransayaid.common.visible
 import com.oleg.quransayaid.databinding.ActivityHomeBinding
+import com.oleg.quransayaid.ui.ayatread.AyatReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,14 +64,18 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        adapter = HomeAdapter()
-        with(binding) {
-            rvSurahList.layoutManager = LinearLayoutManager(this@HomeActivity)
-            rvSurahList.adapter = adapter
-            rvSurahList.addItemDecoration(
+        adapter = HomeAdapter().apply {
+            onItemClick = { surahId ->
+                AyatReadActivity.start(this@HomeActivity, surahId)
+            }
+        }
+
+        with(binding.rvSurahList) {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            binding.rvSurahList.adapter = adapter
+            addItemDecoration(
                 DividerItemDecoration(this@HomeActivity, RecyclerView.VERTICAL)
             )
-
         }
 
     }

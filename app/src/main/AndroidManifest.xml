@@ -3,6 +3,7 @@
     package="com.oleg.quransayaid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -12,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuranSayaID">
         <activity
-            android:name="com.oleg.quransayaid.ui.home.HomeActivity"
+            android:name=".ui.ayatread.AyatReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

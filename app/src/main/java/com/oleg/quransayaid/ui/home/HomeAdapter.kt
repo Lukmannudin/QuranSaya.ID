@@ -14,6 +14,8 @@ class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>() {
 
     private val surahList: MutableList<Surah> = mutableListOf()
 
+    lateinit var onItemClick: (surahId: Int) -> Unit
+
     fun setData(surahList: List<Surah>) {
         this.surahList.addAll(surahList)
         notifyItemRangeInserted(0, surahList.size)
@@ -22,7 +24,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemBinding = ItemSurahBinding.inflate(layoutInflater, parent, false)
-        return HomeViewHolder(itemBinding)
+        return HomeViewHolder(itemBinding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {

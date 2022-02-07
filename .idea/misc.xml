@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidNdkProjectSettings">
+    <option name="showFilesUnknownToCMake" value="false" />
+  </component>
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_circle.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_ellipse_1.xml" value="0.1" />
-        <entry key="app/src/main/res/font/fonts.xml" value="0.13796296296296295" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2364102564102564" />
-        <entry key="app/src/main/res/layout/item_home.xml" value="0.24010416666666667" />
-        <entry key="app/src/main/res/layout/item_surah.xml" value="0.24010416666666667" />
       </map>
     </option>
   </component>
