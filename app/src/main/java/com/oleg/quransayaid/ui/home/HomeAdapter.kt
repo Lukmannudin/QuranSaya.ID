@@ -2,7 +2,8 @@ package com.oleg.quransayaid.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.oleg.quransayaid.data.Surah
 import com.oleg.quransayaid.databinding.ItemSurahBinding
 
@@ -10,16 +11,11 @@ import com.oleg.quransayaid.databinding.ItemSurahBinding
  * Crafted by Lukman on 07/02/22.
  **/
 
-class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>() {
-
-    private val surahList: MutableList<Surah> = mutableListOf()
+class HomeAdapter(
+    var surahList: MutableList<Surah> = mutableListOf()
+) : ListAdapter<Surah, HomeViewHolder>(HomeItemDiffCallback()) {
 
     lateinit var onItemClick: (surahId: Int) -> Unit
-
-    fun setData(surahList: List<Surah>) {
-        this.surahList.addAll(surahList)
-        notifyItemRangeInserted(0, surahList.size)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,8 +24,18 @@ class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.bind(surahList[position])
+        holder.bind(currentList[position])
     }
 
-    override fun getItemCount() = surahList.size
+    override fun getItemCount() = currentList.size
+
+    class HomeItemDiffCallback : DiffUtil.ItemCallback<Surah>() {
+        override fun areItemsTheSame(oldItem: Surah, newItem: Surah): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Surah, newItem: Surah): Boolean {
+            return oldItem == newItem
+        }
+    }
 }

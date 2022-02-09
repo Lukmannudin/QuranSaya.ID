@@ -8,8 +8,10 @@ import com.oleg.quransayaid.data.Result
 import com.oleg.quransayaid.data.Surah
 import com.oleg.quransayaid.data.surahsource.SurahRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -30,7 +32,9 @@ class HomeViewModel @Inject constructor(
             repository.fetchSurahes().collectLatest { surahResponse ->
                 when (surahResponse) {
                     is Result.Success -> {
-                        _surahList.postValue(HomeViewState.OnLoaded(surahResponse.data))
+                        withContext(Dispatchers.Main) {
+                            _surahList.value = HomeViewState.OnLoaded(surahResponse.data)
+                        }
                     }
                     is Result.Error -> {
                         _surahList.postValue(HomeViewState.OnFailure(surahResponse.exception.message))

@@ -28,6 +28,7 @@ class AyatReadActivity : AppCompatActivity() {
 
     private fun setupAdapter() {
         with(binding) {
+
         }
     }
 

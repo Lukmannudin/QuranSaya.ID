@@ -25,10 +25,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.fetchSurahList()
 
         setupAdapter()
 
-        viewModel.fetchSurahList()
 
         subscribeSurahList()
     }
@@ -37,8 +37,8 @@ class HomeActivity : AppCompatActivity() {
         viewModel.surahList.observe(this) { state ->
             when (state) {
                 is HomeViewModel.HomeViewState.OnLoaded -> {
-                    adapter.setData(state.surahList)
                     setLoading(false)
+                    adapter.submitList(state.surahList)
                 }
                 is HomeViewModel.HomeViewState.OnFailure -> {
                     Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
@@ -69,14 +69,12 @@ class HomeActivity : AppCompatActivity() {
                 AyatReadActivity.start(this@HomeActivity, surahId)
             }
         }
+        binding.rvSurahList.layoutManager = LinearLayoutManager(this@HomeActivity)
+        binding.rvSurahList.adapter = adapter
+        binding.rvSurahList.addItemDecoration(
+            DividerItemDecoration(this@HomeActivity, RecyclerView.VERTICAL)
+        )
 
-        with(binding.rvSurahList) {
-            layoutManager = LinearLayoutManager(this@HomeActivity)
-            binding.rvSurahList.adapter = adapter
-            addItemDecoration(
-                DividerItemDecoration(this@HomeActivity, RecyclerView.VERTICAL)
-            )
-        }
 
     }
 }
