@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.oleg.quransayaid.data.Ayat
 import com.oleg.quransayaid.data.Result
 import com.oleg.quransayaid.data.ayatsource.AyatRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,6 +16,7 @@ import javax.inject.Inject
  * Crafted by Lukman on 08/02/22.
  **/
 
+@HiltViewModel
 class AyatReadViewModel @Inject constructor(
     private val repository: AyatRepository
 ) : ViewModel() {

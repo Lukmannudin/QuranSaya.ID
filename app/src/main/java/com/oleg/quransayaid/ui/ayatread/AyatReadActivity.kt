@@ -7,7 +7,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.oleg.quransayaid.databinding.ActivityAyatReadBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AyatReadActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAyatReadBinding
