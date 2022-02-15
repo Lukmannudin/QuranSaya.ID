@@ -27,13 +27,14 @@
 
     <TextView
         android:id="@+id/ayat_arabic_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
         android:layout_marginTop="@dimen/small_margin"
         android:paddingBottom="@dimen/normal_margin"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/font_size_large_ayat"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@id/ayat_number"
