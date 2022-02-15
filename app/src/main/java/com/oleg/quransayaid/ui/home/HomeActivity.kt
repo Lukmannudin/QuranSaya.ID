@@ -74,7 +74,5 @@ class HomeActivity : AppCompatActivity() {
         binding.rvSurahList.addItemDecoration(
             DividerItemDecoration(this@HomeActivity, RecyclerView.VERTICAL)
         )
-
-
     }
 }

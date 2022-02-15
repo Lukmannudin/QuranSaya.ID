@@ -11,9 +11,7 @@ import com.oleg.quransayaid.databinding.ItemSurahBinding
  * Crafted by Lukman on 07/02/22.
  **/
 
-class HomeAdapter(
-    var surahList: MutableList<Surah> = mutableListOf()
-) : ListAdapter<Surah, HomeViewHolder>(HomeItemDiffCallback()) {
+class HomeAdapter : ListAdapter<Surah, HomeViewHolder>(HomeItemDiffCallback()) {
 
     lateinit var onItemClick: (surahId: Int) -> Unit
 
