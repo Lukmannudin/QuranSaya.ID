@@ -34,18 +34,15 @@ android {
         jvmTarget = '1.8'
     }
 
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
-    }
-
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
+
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    implementation project(path: ":data")
 
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$app_compat_version"
@@ -55,17 +52,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$epresso_version"
 
-    // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-
     // hilt
     implementation "com.google.dagger:hilt-android:$hilt_android_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_android_version"
-
-    // moshi
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_kotlin_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_moshi_converter_version"
 
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
@@ -75,9 +64,17 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_ktx"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
 
-    // chucker
-    debugImplementation "com.github.chuckerteam.chucker:library:$chucker_version"
-    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chucker_version"
+    // room
+//    implementation "androidx.room:room-runtime:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_kotlin_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_moshi_converter_version"
 
 }
 

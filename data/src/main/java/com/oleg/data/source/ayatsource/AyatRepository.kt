@@ -1,0 +1,15 @@
+package com.oleg.data.source.ayatsource
+
+import com.oleg.data.Ayat
+import com.oleg.data.Result
+import kotlinx.coroutines.flow.Flow
+
+/**
+ * Crafted by Lukman on 08/02/22.
+ **/
+
+interface AyatRepository {
+
+    suspend fun fetchAyatList(id: Int): Flow<Result<List<Ayat>>>
+
+}

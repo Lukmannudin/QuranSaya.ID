@@ -36,4 +36,5 @@ ext {
     fragment_ktx = '1.4.1'
     lifecycle_viewmodel_ktx = '2.4.0'
     chucker_version = '3.5.2'
+    room_version = '2.4.1'
 }

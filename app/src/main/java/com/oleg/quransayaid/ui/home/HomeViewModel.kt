@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oleg.quransayaid.data.Result
-import com.oleg.quransayaid.data.Surah
-import com.oleg.quransayaid.data.surahsource.SurahRepository
+import com.oleg.data.Result
+import com.oleg.data.source.surahsource.SurahRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -21,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repository: SurahRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _surahList = MutableLiveData<HomeViewState>()
     val surahList: LiveData<HomeViewState> = _surahList
@@ -48,8 +47,8 @@ class HomeViewModel @Inject constructor(
     }
 
     sealed class HomeViewState {
-        data class OnLoaded(val surahList: List<Surah>): HomeViewState()
-        data class OnFailure(val message: String? = null): HomeViewState()
-        object OnLoading: HomeViewState()
+        data class OnLoaded(val surahList: List<com.oleg.data.Surah>) : HomeViewState()
+        data class OnFailure(val message: String? = null) : HomeViewState()
+        object OnLoading : HomeViewState()
     }
 }

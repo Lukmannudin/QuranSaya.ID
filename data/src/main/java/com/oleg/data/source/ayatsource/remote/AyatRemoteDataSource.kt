@@ -1,0 +1,32 @@
+package com.oleg.data.source.ayatsource.remote
+
+import com.oleg.data.Ayat
+import com.oleg.data.Result
+import com.oleg.data.api.ApiHelper
+import com.oleg.data.mapper.ayatmapper.AyatMapper.mapToAyatListRemote
+import com.oleg.data.source.ayatsource.AyatDataSource
+import javax.inject.Inject
+
+/**
+ * Crafted by Lukman on 08/02/22.
+ **/
+
+class AyatRemoteDataSource @Inject constructor(
+    private val apiHelper: ApiHelper
+) : AyatDataSource {
+
+    override suspend fun fetchAyat(id: Int): Result<List<Ayat>> {
+        return try {
+            val ayatDataResponse = apiHelper.getAyat(id)
+            if (ayatDataResponse.isSuccessful) {
+                val ayatData = ayatDataResponse.body()?.data
+                Result.Success(ayatData?.listAyatRemote.mapToAyatListRemote())
+            } else {
+                Result.Error(Exception())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Result.Error(e)
+        }
+    }
+}
