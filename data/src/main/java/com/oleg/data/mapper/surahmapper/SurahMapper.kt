@@ -1,6 +1,7 @@
 package com.oleg.data.mapper.surahmapper
 
-import com.oleg.data.Surah
+import com.oleg.data.domain.Surah
+import com.oleg.data.source.surahsource.local.SurahLocal
 import com.oleg.data.source.surahsource.remote.SurahRemote
 
 /**
@@ -8,9 +9,23 @@ import com.oleg.data.source.surahsource.remote.SurahRemote
  **/
 
 object SurahMapper {
-    fun List<SurahRemote>?.mapToSurahes(): List<Surah> {
-        return this?.let { surahRemotes ->
-            SurahesRemoteToSurahes(SurahRemoteToSurah()).map(surahRemotes)
+    fun List<SurahRemote>?.mapRemoteToSurahes(): List<Surah> {
+        return this?.let { surahRemoteList ->
+            SurahListRemoteToSurahList(SurahRemoteToSurah()).map(surahRemoteList)
         } ?: emptyList()
+    }
+
+    fun List<SurahLocal>.mapLocalToSurahes(): List<Surah> {
+        return this.let { surahLocalList ->
+            SurahListLocalToSurahList(SurahLocalToSurah()).map(surahLocalList)
+        }
+    }
+
+    fun List<Surah>.mapDomainListToLocalList(): List<SurahLocal> {
+        return SurahListToSurahLocalList(SurahToSurahLocal()).map(this)
+    }
+
+    fun Surah.mapToLocal(): SurahLocal {
+        return SurahToSurahLocal().map(this)
     }
 }

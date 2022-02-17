@@ -1,7 +1,7 @@
 package com.oleg.data.source.ayatsource.remote
 
-import com.oleg.data.Ayat
-import com.oleg.data.Result
+import com.oleg.data.domain.Ayat
+import com.oleg.data.common.Result
 import com.oleg.data.api.ApiHelper
 import com.oleg.data.mapper.ayatmapper.AyatMapper.mapToAyatListRemote
 import com.oleg.data.source.ayatsource.AyatDataSource

@@ -1,6 +1,7 @@
 package com.oleg.quransayaid.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
+import com.oleg.data.domain.Surah
 import com.oleg.quransayaid.databinding.ItemSurahBinding
 
 /**
@@ -12,7 +13,7 @@ class HomeViewHolder(
     private val onItemClick: (surahId: Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(surah: com.oleg.data.Surah) {
+    fun bind(surah: Surah) {
         with(binding) {
             surahId.text = surah.id.toString()
             surahNameLatin.text = surah.latin

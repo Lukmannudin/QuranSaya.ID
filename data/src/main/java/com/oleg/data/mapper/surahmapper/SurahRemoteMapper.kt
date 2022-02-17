@@ -1,6 +1,6 @@
 package com.oleg.data.mapper.surahmapper
 
-import com.oleg.data.Surah
+import com.oleg.data.domain.Surah
 import com.oleg.data.mapper.base.Mapper
 import com.oleg.data.mapper.base.NullableInputListMapper
 import com.oleg.data.source.surahsource.remote.SurahRemote
@@ -24,7 +24,7 @@ internal class SurahRemoteToSurah : Mapper<SurahRemote, Surah> {
     }
 }
 
-internal class SurahesRemoteToSurahes(
+internal class SurahListRemoteToSurahList(
     private val surahRemoteMapper: Mapper<SurahRemote, Surah>
 ) : NullableInputListMapper<SurahRemote, Surah> {
     override fun map(input: List<SurahRemote>?): List<Surah> {

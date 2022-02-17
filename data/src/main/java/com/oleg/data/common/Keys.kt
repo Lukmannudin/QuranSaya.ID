@@ -1,4 +1,4 @@
-package com.oleg.data
+package com.oleg.data.common
 
 import android.util.Base64
 

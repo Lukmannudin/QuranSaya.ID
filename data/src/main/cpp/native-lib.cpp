@@ -3,7 +3,7 @@
 
 extern "C"
 jstring
-Java_com_oleg_data_Keys_getBaseUrlToken(
+Java_com_oleg_data_common_Keys_getBaseUrlToken(
         JNIEnv *env,
         jobject /* this */) {
     //https://quran-service.herokuapp.com

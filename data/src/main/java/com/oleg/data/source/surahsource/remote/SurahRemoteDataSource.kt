@@ -1,10 +1,9 @@
 package com.oleg.data.source.surahsource.remote
 
-import com.oleg.data.Result
-import com.oleg.data.Surah
+import com.oleg.data.common.Result
+import com.oleg.data.domain.Surah
 import com.oleg.data.api.ApiHelper
-import com.oleg.data.mapper.surahmapper.SurahMapper.mapToSurahes
-import com.oleg.data.source.surahsource.SurahDataSource
+import com.oleg.data.mapper.surahmapper.SurahMapper.mapRemoteToSurahes
 import javax.inject.Inject
 
 /**
@@ -13,13 +12,13 @@ import javax.inject.Inject
 
 class SurahRemoteDataSource @Inject constructor(
     private val apiHelper: ApiHelper
-) : SurahDataSource {
-    override suspend fun fetchSurahes(): Result<List<Surah>> {
+) {
+    suspend fun fetchSurahList(): Result<List<Surah>> {
         return try {
             val surahes = apiHelper.getSurah()
             if (surahes.isSuccessful) {
                 val surahesData = surahes.body()?.data
-                Result.Success(surahesData.mapToSurahes())
+                Result.Success(surahesData.mapRemoteToSurahes())
             } else {
                 Result.Error(Exception())
             }

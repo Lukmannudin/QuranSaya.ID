@@ -1,10 +1,11 @@
-package com.oleg.data.di
+package com.oleg.quransayaid.di
 
 import com.oleg.data.source.ayatsource.AyatRepository
 import com.oleg.data.source.ayatsource.AyatRepositoryImpl
 import com.oleg.data.source.ayatsource.remote.AyatRemoteDataSource
 import com.oleg.data.source.surahsource.SurahRepository
 import com.oleg.data.source.surahsource.SurahRepositoryImpl
+import com.oleg.data.source.surahsource.local.SurahLocalDataSource
 import com.oleg.data.source.surahsource.remote.SurahRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -20,8 +21,11 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
 
     @Provides
-    fun provideSurahRepository(surahDataSource: SurahRemoteDataSource): SurahRepository {
-        return SurahRepositoryImpl(surahDataSource)
+    fun provideSurahRepository(
+        surahRemoteDataSource: SurahRemoteDataSource,
+        surahLocalDataSource: SurahLocalDataSource
+    ): SurahRepository {
+        return SurahRepositoryImpl(surahRemoteDataSource, surahLocalDataSource)
     }
 
     @Provides

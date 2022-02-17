@@ -1,4 +1,4 @@
-package com.oleg.data
+package com.oleg.data.domain
 
 /**
  * Crafted by Lukman on 08/02/22.

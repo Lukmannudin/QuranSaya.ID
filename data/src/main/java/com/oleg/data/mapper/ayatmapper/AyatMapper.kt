@@ -1,6 +1,6 @@
 package com.oleg.data.mapper.ayatmapper
 
-import com.oleg.data.Ayat
+import com.oleg.data.domain.Ayat
 import com.oleg.data.source.ayatsource.remote.AyatRemote
 
 /**

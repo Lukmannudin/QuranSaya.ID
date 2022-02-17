@@ -1,10 +1,10 @@
-package com.oleg.data.di
+package com.oleg.quransayaid.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.oleg.data.BuildConfig
-import com.oleg.data.Keys
+import com.oleg.data.common.Keys
 import com.oleg.data.api.ApiHelper
 import com.oleg.data.api.ApiHelperImpl
 import com.oleg.data.api.ApiService

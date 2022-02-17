@@ -1,6 +1,7 @@
 package com.oleg.quransayaid.ui.ayatread
 
 import androidx.recyclerview.widget.RecyclerView
+import com.oleg.data.domain.Ayat
 import com.oleg.quransayaid.databinding.ItemAyatBinding
 
 /**
@@ -11,7 +12,7 @@ class AyatReadViewHolder(
     private val itemAyatBinding: ItemAyatBinding
 ) : RecyclerView.ViewHolder(itemAyatBinding.root) {
 
-    fun bind(ayat: com.oleg.data.Ayat) {
+    fun bind(ayat: Ayat) {
         with(itemAyatBinding){
             ayatNumber.text = ayat.ayatNumber.toString()
             ayatArabicText.text = ayat.arabicText

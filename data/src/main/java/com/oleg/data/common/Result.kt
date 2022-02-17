@@ -1,4 +1,4 @@
-package com.oleg.data
+package com.oleg.data.common
 
 /**
  * Crafted by Lukman on 17/01/22.

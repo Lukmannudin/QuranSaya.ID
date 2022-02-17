@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.oleg.data.Surah
+import com.oleg.data.domain.Surah
 import com.oleg.quransayaid.databinding.ItemSurahBinding
 
 /**

@@ -1,7 +1,7 @@
 package com.oleg.data.source.surahsource
 
-import com.oleg.data.Result
-import com.oleg.data.Surah
+import com.oleg.data.common.Result
+import com.oleg.data.domain.Surah
 import kotlinx.coroutines.flow.Flow
 
 /**

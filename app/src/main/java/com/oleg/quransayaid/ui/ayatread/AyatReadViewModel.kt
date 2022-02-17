@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oleg.data.Result
+import com.oleg.data.common.Result
+import com.oleg.data.domain.Ayat
 import com.oleg.data.source.ayatsource.AyatRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -42,7 +43,7 @@ class AyatReadViewModel @Inject constructor(
     }
 
     sealed class AyatReadViewState {
-        data class OnLoaded(val ayatList: List<com.oleg.data.Ayat>) : AyatReadViewState()
+        data class OnLoaded(val ayatList: List<Ayat>) : AyatReadViewState()
         data class OnFailure(val message: String? = null) : AyatReadViewState()
         object OnLoading : AyatReadViewState()
     }
