@@ -3,8 +3,7 @@ package com.oleg.data.source.ayatsource.remote
 import com.oleg.data.domain.Ayat
 import com.oleg.data.common.Result
 import com.oleg.data.api.ApiHelper
-import com.oleg.data.mapper.ayatmapper.AyatMapper.mapToAyatListRemote
-import com.oleg.data.source.ayatsource.AyatDataSource
+import com.oleg.data.mapper.ayatmapper.AyatMapper.mapRemoteListToAyatList
 import javax.inject.Inject
 
 /**
@@ -13,14 +12,14 @@ import javax.inject.Inject
 
 class AyatRemoteDataSource @Inject constructor(
     private val apiHelper: ApiHelper
-) : AyatDataSource {
+) {
 
-    override suspend fun fetchAyat(id: Int): Result<List<Ayat>> {
+    suspend fun fetchAyatList(id: Int): Result<List<Ayat>> {
         return try {
             val ayatDataResponse = apiHelper.getAyat(id)
             if (ayatDataResponse.isSuccessful) {
                 val ayatData = ayatDataResponse.body()?.data
-                Result.Success(ayatData?.listAyatRemote.mapToAyatListRemote())
+                Result.Success(ayatData?.listAyatRemote.mapRemoteListToAyatList())
             } else {
                 Result.Error(Exception())
             }

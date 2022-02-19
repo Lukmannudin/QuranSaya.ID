@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SurahLocalDataSource @Inject constructor(
     private val surahDao: SurahDao
 ) {
-    suspend fun fetchSurahes(): Result<List<Surah>> {
+    suspend fun fetchSurahList(): Result<List<Surah>> {
         return try {
             val surahList = surahDao.getAll().mapLocalToSurahes()
             Result.Success(surahList)

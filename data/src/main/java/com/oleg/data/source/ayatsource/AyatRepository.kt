@@ -10,6 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface AyatRepository {
 
-    suspend fun fetchAyatList(id: Int): Flow<Result<List<Ayat>>>
+    suspend fun fetchAyatList(surahId: Int): Flow<Result<List<Ayat>>>
 
 }

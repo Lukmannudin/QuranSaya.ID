@@ -2,6 +2,7 @@ package com.oleg.quransayaid.di
 
 import com.oleg.data.source.ayatsource.AyatRepository
 import com.oleg.data.source.ayatsource.AyatRepositoryImpl
+import com.oleg.data.source.ayatsource.local.AyatLocalDataSource
 import com.oleg.data.source.ayatsource.remote.AyatRemoteDataSource
 import com.oleg.data.source.surahsource.SurahRepository
 import com.oleg.data.source.surahsource.SurahRepositoryImpl
@@ -29,7 +30,10 @@ object RepositoryModule {
     }
 
     @Provides
-    fun provideAyatRepository(ayatRemoteDataSource: AyatRemoteDataSource): AyatRepository {
-        return AyatRepositoryImpl(ayatRemoteDataSource)
+    fun provideAyatRepository(
+        ayatRemoteDataSource: AyatRemoteDataSource,
+        ayatLocalDataSource: AyatLocalDataSource
+    ): AyatRepository {
+        return AyatRepositoryImpl(ayatRemoteDataSource, ayatLocalDataSource)
     }
 }

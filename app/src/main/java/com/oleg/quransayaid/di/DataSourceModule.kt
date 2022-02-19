@@ -5,6 +5,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.oleg.data.api.ApiHelper
 import com.oleg.data.common.AppDatabase
+import com.oleg.data.source.ayatsource.local.AyatLocalDataSource
+import com.oleg.data.source.ayatsource.remote.AyatRemoteDataSource
 import com.oleg.data.source.surahsource.local.SurahDao
 import com.oleg.data.source.surahsource.local.SurahLocalDataSource
 import com.oleg.data.source.surahsource.remote.SurahRemoteDataSource
@@ -42,5 +44,15 @@ object DataSourceModule {
     @Provides
     fun provideSurahLocalDataSource(database: AppDatabase): SurahLocalDataSource {
         return SurahLocalDataSource(database.surahDao())
+    }
+    
+    @Provides
+    fun provideAyatRemoteDataSource(apiHelper: ApiHelper): AyatRemoteDataSource {
+        return AyatRemoteDataSource(apiHelper)
+    }
+    
+    @Provides
+    fun provideAyatLocalDataSource(database: AppDatabase): AyatLocalDataSource {
+        return AyatLocalDataSource(database.ayatDao())
     }
 }

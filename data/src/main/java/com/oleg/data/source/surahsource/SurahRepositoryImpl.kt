@@ -17,14 +17,14 @@ class SurahRepositoryImpl @Inject constructor(
     private val surahLocalDataSource: SurahLocalDataSource
 ) : SurahRepository {
     override suspend fun fetchSurahes(): Flow<Result<List<Surah>>> = flow {
-        val surahLocal = surahLocalDataSource.fetchSurahes()
+        val surahListLocal = surahLocalDataSource.fetchSurahList()
 
         var isNeedReload = false
 
-        when (surahLocal) {
+        when (surahListLocal) {
             is Result.Success -> {
-                if (surahLocal.data.isNotEmpty()) {
-                    emit(surahLocal)
+                if (surahListLocal.data.isNotEmpty()) {
+                    emit(surahListLocal)
                 } else {
                     isNeedReload = true
                 }
